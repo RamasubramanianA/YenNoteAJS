@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Hello World!</title>
+      <link href="app.css" rel="stylesheet">
+    </head>
+    <body ng-app="YenNoteApp" ng-controller="NoteController">
+      <div style="display: flex">
+        <div style="width:17vw;height:95vh;background:rgb(180, 180, 241)">
+        <div ng-repeat = "d in Note.doc.sheets">
+            <div ng-click= "Note.onSheet(d.name)" class="SheetList" on-mouseover='overSheetList(d.name)'
+            on-mouseleave='leaveSheetList(d.name)' >
+              {{d.name}}</div>
+          </div>
+        </div>
+        <div style="width:83vw;height:95vh">
+          <div class="NoteList">
+            <span ng-repeat =  "n in Note.notes">
+              <span ng-click = "Note.onNote(n)" class="NoteSpan">{{n}}</span>
+            </span>
+          </div>
+          <div class="centerPlace">
+              <div ng-repeat =  "d in Note.dataList">
+                  <div ng-click= "Note.copy(d)" class="dataList" >
+                    {{d}}
+                  </div>
+                </div>
+            </div>
+            <textarea matInput class="textArea" placeholder="Use Alt+Enter to give new line in TextArea"></textarea>
+        </div>
+      </div>
+      <div class="statusBar" style="width:100vw;height:5vh">Status bar</div>
+      <script src="jquery-3.3.1.js"></script>
+      <script src="angular.min.js"></script>
+      <script src="angular-route.min.js"></script>
+      <!-- <script src="js/jquery.nicescroll.min.js"></script>             -->
+      <script src="app.js"></script>
+    </body>
+  </html>
